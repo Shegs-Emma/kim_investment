@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface StyleProps {
   topArea?: boolean;
+  platform?: boolean;
 }
 
 const ButtonContainer = styled.button<StyleProps>`
@@ -9,23 +10,27 @@ const ButtonContainer = styled.button<StyleProps>`
   cursor: pointer;
   padding: 0.5625rem 0.9375rem;
   width: 100%;
-  width: ${({ topArea }) => (topArea ? '13.25rem' : '')};
+  width: ${({ topArea }) => (topArea ? '9.1875rem' : '')};
+  width: ${({ platform }) => (platform ? '12.5rem' : '')};
   height: 50px;
   font-family: 'Inter', sans-serif;
   border: 1px solid #ffffff;
-  margin-top: 2.5rem;
+  margin: 2.5rem auto 0 auto;
   color: #ffffff;
+  color: ${({ platform }) => (platform ? '#464646' : '')};
 
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
+  font-size: ${({ platform }) => (platform ? '13px' : '')};
   line-height: 24px;
   text-align: center;
 
   background: #ea622b;
   background: ${({ topArea }) => (topArea ? '#194A96' : '')};
+  background: ${({ platform }) => (platform ? '#ffffff' : '')};
   border-radius: 0.125rem;
-  border-radius: ${({ topArea }) => (topArea ? '8px' : '')};
+  border-radius: ${({ topArea, platform }) => (topArea || platform ? '8px' : '')};
   &:hover,
   &:active {
     background-color: rgba(150, 20, 132, 1);
@@ -36,6 +41,14 @@ const ButtonContainer = styled.button<StyleProps>`
 
   &:disabled {
     background-color: red;
+  }
+
+  @media screen and (min-width: 52em) {
+    width: ${({ topArea }) => (topArea ? '13.25rem' : '')};
+    width: ${({ platform }) => (platform ? '15.625rem' : '')};
+    font-size: ${({ platform }) => (platform ? '17px' : '')};
+    font-size: 14px;
+    margin: 2.5rem 0 0 0;
   }
 `;
 
