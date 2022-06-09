@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { FC, ReactNode } from 'react';
-import { LayoutContainer } from './layout.styles';
+import { LayoutContainer } from './Layout.styles';
 import { Toaster } from 'react-hot-toast';
 
 interface LayoutProp {
