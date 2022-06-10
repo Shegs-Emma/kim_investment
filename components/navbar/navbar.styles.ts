@@ -48,7 +48,9 @@ const NavBar = styled.div`
   }
 `;
 
-const LogoArea = styled.div``;
+const LogoArea = styled.div`
+  cursor: pointer;
+`;
 
 const LinkArea = styled.div<NavbarProps>`
   display: none;

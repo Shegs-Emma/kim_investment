@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface LandingProps {
+  aboutUs?: boolean;
+}
+
 const LandingContainer = styled.div`
   width: 100%;
   padding-top: 8rem;
@@ -42,11 +46,15 @@ const TopMostLevel = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.div<LandingProps>`
   width: 100%;
 
   @media (min-width: 52em) {
     width: 60%;
+    display: ${({ aboutUs }) => (aboutUs ? 'flex' : '')};
+    flex-direction: ${({ aboutUs }) => (aboutUs ? 'column' : '')};
+    width: ${({ aboutUs }) => (aboutUs ? '100%' : '')};
+    text-align: ${({ aboutUs }) => (aboutUs ? 'center' : '')};
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
@@ -170,14 +178,27 @@ const HowItWorks = styled.div`
   }
 `;
 
-const HowItem = styled.div`
+const HowItem = styled.div<LandingProps>`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 6rem;
+  display: ${({ aboutUs }) => (aboutUs ? 'none' : '')};
+
+  @media screen and (min-width: 52em) {
+    display: ${({ aboutUs }) => (aboutUs ? 'flex' : '')};
+    flex-direction: row;
+  }
+`;
+
+const HowItemMobile = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 6rem;
 
   @media screen and (min-width: 52em) {
-    flex-direction: row;
+    display: none;
   }
 `;
 
@@ -193,13 +214,15 @@ const HowLeft = styled.div`
   }
 `;
 
-const HowRight = styled.div`
+const HowRight = styled.div<LandingProps>`
   width: 100%;
   display: flex;
   flex-direction: column;
   background: #fafafa;
+  background: ${({ aboutUs }) => (aboutUs ? 'none' : '')};
   border-radius: 16px;
   padding: 9rem 2rem 5rem 2rem;
+  padding: ${({ aboutUs }) => (aboutUs ? '1rem .2rem 1rem .2rem' : '')};
 
   @media screen and (min-width: 52em) {
     width: 50%;
@@ -375,4 +398,5 @@ export {
   TitlePart,
   BlueCard,
   MiddlePart,
+  HowItemMobile,
 };
