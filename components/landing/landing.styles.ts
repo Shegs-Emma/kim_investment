@@ -226,6 +226,7 @@ const HowRight = styled.div<LandingProps>`
 
   @media screen and (min-width: 52em) {
     width: 50%;
+    padding: ${({ aboutUs }) => (aboutUs ? '9rem 2rem 5rem 2rem' : '')};
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
