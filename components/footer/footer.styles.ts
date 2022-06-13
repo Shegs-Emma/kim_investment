@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-interface StyleProps {}
+interface StyleProps {
+  contactForm?: boolean;
+}
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -140,15 +142,42 @@ const FullInput = styled.input.attrs({
   box-sizing: border-box;
   border-radius: 0.5rem;
   border: 1px solid #bdbdbd;
+  border: ${({ contactForm }) => (contactForm ? 'none' : '')};
   margin: 1.3125rem 0;
+  margin: ${({ contactForm }) => (contactForm ? '0' : '')};
   padding-left: 1rem;
   background-color: transparent;
+  background-color: ${({ contactForm }) => (contactForm ? 'rgba(197, 213, 255, 0.2)' : '')};
 
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 0.8125rem;
   line-height: 1.0625rem;
+  color: #4f4f4f;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const FullTextArea = styled.textarea`
+  outline: none;
+  width: 100%;
+  height: 2.8125rem;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 0.125rem;
+  border: none;
+  /* margin-bottom: 0.3375rem; */
+  padding: 1rem;
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8125rem;
+  line-height: 1.0625rem;
+  background-color: rgba(197, 213, 255, 0.2);
   color: #4f4f4f;
 
   &:focus {
@@ -169,6 +198,7 @@ export {
   FooterDiv,
   FormSide,
   FooterLinks,
+  FullTextArea,
   Contact,
   FooterTop,
   FooterBottom,

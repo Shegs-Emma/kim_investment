@@ -233,6 +233,11 @@ const HowRight = styled.div<LandingProps>`
     width: 85%;
     margin: 0 auto;
   }
+
+  @media (min-width: 48em) and (max-width: 51.938em) {
+    margin: 0 auto 0 3rem;
+    width: 75%;
+  }
 `;
 
 const FAQArea = styled.div`

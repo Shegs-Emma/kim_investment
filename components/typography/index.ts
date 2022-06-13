@@ -17,6 +17,8 @@ interface StyleProps {
   passionB?: boolean;
   blur?: boolean;
   number?: boolean;
+  contact?: boolean;
+  contactForm?: boolean;
 }
 
 const H1 = styled.h1<StyleProps>`
@@ -25,7 +27,7 @@ const H1 = styled.h1<StyleProps>`
   font-weight: 700;
   font-weight: ${({ bottom }) => (bottom ? '800' : '')};
   font-size: 18px;
-  font-size: ${({ howItWorks }) => (howItWorks ? '16px' : '')};
+  font-size: ${({ howItWorks }) => (howItWorks ? '18px' : '')};
   font-size: ${({ bottom }) => (bottom ? '18px' : '')};
   line-height: 120%;
   text-align: center;
@@ -87,7 +89,7 @@ const Span = styled.span<StyleProps>`
       ? '700'
       : ''};
   font-size: 14px;
-  font-size: ${({ details }) => (details ? '12px' : '')};
+  font-size: ${({ details, contact }) => (details || contact ? '12px' : '')};
   font-size: ${({ howItWorks, blur }) => (howItWorks || blur ? '18px' : '')};
   font-size: ${({ howRight }) => (howRight ? '14px' : '')};
   font-size: ${({ footer }) => (footer ? '20px' : '')};
@@ -105,6 +107,8 @@ const Span = styled.span<StyleProps>`
   cursor: ${({ sidebar }) => (sidebar ? 'pointer' : '')};
   color: ${({ passionB, blur }) => (passionB || blur ? '#194A96' : '')};
 
+  text-align: ${({ contact }) => (contact ? 'center' : '')};
+
   @media screen and (min-width: 52em) {
     font-size: 18px;
     font-size: ${({ details }) => (details ? '14px' : '')};
@@ -112,7 +116,7 @@ const Span = styled.span<StyleProps>`
     font-size: ${({ howItWorks, blur }) => (howItWorks || blur ? '36px' : '')};
     font-size: ${({ passion, passionB }) => (passion || passionB ? '22px' : '')};
     font-size: ${({ aboutUs }) => (aboutUs ? '45px' : '')};
-    font-size: ${({ howRight }) => (howRight ? '24px' : '')};
+    font-size: ${({ howRight, contact }) => (howRight || contact ? '24px' : '')};
     font-weight: ${({ aboutUs, passion, passionB }) =>
       aboutUs || passion || passionB ? '700' : ''};
     color: ${({ aboutUs, passionB, blur }) => (aboutUs || passionB || blur ? '#194A96' : '')};
@@ -133,15 +137,15 @@ const P = styled.p<StyleProps>`
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-weight: ${({ details, howRight, accord, passion }) =>
-    details || howRight || accord || passion ? '300' : ''};
+  font-weight: ${({ details, howRight, accord, passion, contactForm }) =>
+    details || howRight || accord || passion || contactForm ? '300' : ''};
   font-weight: ${({ number }) => (number ? '700' : '')};
   font-weight: ${({ blur }) => (blur ? '400' : '')};
   font-size: 12px;
   font-size: ${({ details, footerForm, footerBottom }) =>
     details || footerForm || footerBottom ? '12px' : ''};
   font-size: ${({ howRight, platform, footer }) => (howRight || platform || footer ? '12px' : '')};
-  font-size: ${({ accord }) => (accord ? '14px' : '')};
+  font-size: ${({ accord, contactForm }) => (accord || contactForm ? '14px' : '')};
   line-height: 150%;
   line-height: ${({ footer }) => (footer ? '15.88px' : '')};
   width: ${({ footerForm }) => (footerForm ? '80%' : '')};
@@ -154,6 +158,7 @@ const P = styled.p<StyleProps>`
   color: ${({ details, footerBottom }) => (details || footerBottom ? '#4F4F4F' : '')};
   color: ${({ platform, blur, number }) => (platform || blur || number ? '#ffffff' : '')};
   text-align: ${({ number }) => (number ? 'center' : '')};
+  text-align: ${({ contactForm }) => (contactForm ? 'left' : '')};
 
   @media screen and (min-width: 52em) {
     font-size: 20px;

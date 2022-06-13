@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface StyleProps {
   topArea?: boolean;
   platform?: boolean;
+  contactForm?: boolean;
 }
 
 const ButtonContainer = styled.button<StyleProps>`
@@ -11,7 +12,7 @@ const ButtonContainer = styled.button<StyleProps>`
   padding: 0.5625rem 0.9375rem;
   width: 100%;
   width: ${({ topArea }) => (topArea ? '9.1875rem' : '')};
-  width: ${({ platform }) => (platform ? '12.5rem' : '')};
+  width: ${({ platform, contactForm }) => (platform || contactForm ? '12.5rem' : '')};
   height: 50px;
   font-family: 'Inter', sans-serif;
   border: 1px solid #ffffff;
@@ -27,7 +28,7 @@ const ButtonContainer = styled.button<StyleProps>`
   text-align: center;
 
   background: #ea622b;
-  background: ${({ topArea }) => (topArea ? '#194A96' : '')};
+  background: ${({ topArea, contactForm }) => (topArea || contactForm ? '#194A96' : '')};
   background: ${({ platform }) => (platform ? '#ffffff' : '')};
   border-radius: 0.125rem;
   border-radius: ${({ topArea, platform }) => (topArea || platform ? '8px' : '')};

@@ -6,10 +6,16 @@ interface IProps {
   clicked?: MouseEventHandler<HTMLButtonElement>;
   topArea?: boolean;
   platform?: boolean;
+  contactForm?: boolean;
 }
 
-const Button: FC<IProps> = ({ children, clicked, topArea, platform }: IProps) => (
-  <ButtonContainer onClick={clicked} topArea={topArea} platform={platform}>
+const Button: FC<IProps> = ({ children, clicked, topArea, platform, contactForm }: IProps) => (
+  <ButtonContainer
+    onClick={clicked}
+    topArea={topArea}
+    platform={platform}
+    contactForm={contactForm}
+  >
     {children}
   </ButtonContainer>
 );
@@ -20,4 +26,5 @@ Button.defaultProps = {
   clicked: undefined,
   topArea: undefined,
   platform: undefined,
+  contactForm: undefined,
 };

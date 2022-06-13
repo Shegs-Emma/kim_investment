@@ -39,7 +39,11 @@ const Navbar: FC = () => {
               About Us
             </Link>
           </Span>
-          <Span>Contact us</Span>
+          <Span active={router.asPath === '/contactUs' ? true : false}>
+            <Link href='/contactUs' replace>
+              Contact Us
+            </Link>
+          </Span>
         </LinkArea>
         <MobileLinkArea>
           <GiHamburgerMenu
@@ -62,7 +66,11 @@ const Navbar: FC = () => {
               About Us
             </Link>
           </Span>
-          <Span sidebar>Contact us</Span>
+          <Span sidebar active={router.asPath === '/contactUs' ? true : false}>
+            <Link href='/contactUs' replace>
+              Contact Us
+            </Link>
+          </Span>
         </LinkArea>
       </SidebarMenu>
     </NavbarContainer>
