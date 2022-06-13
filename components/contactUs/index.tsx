@@ -29,7 +29,7 @@ const ContactUs: FC = () => {
             <H1 aboutUs>Contact Us</H1>
             <Span contact>
               Got a special request, need more information on a service or you simply want to talk?
-              Reach out to us and we'll respond as soon as possible.
+              Reach out to us and we&apos;ll respond as soon as possible.
             </Span>
           </ContactUsHeader>
           <ContactUsFormArea>
