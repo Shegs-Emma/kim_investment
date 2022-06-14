@@ -17,12 +17,27 @@ a {
   box-sizing: border-box;
 }
 
+.appointL {
+  position: relative;
+  top: 0.35rem;
+  left: 0.1rem;
+}
+
 .appoint {
   position: relative;
-  top: 0.3rem;
-  left: 0.5rem;
+  top: 0.35rem;
+  left: -0.5rem;
 }
 
 .hamburger {
   cursor: pointer;
+}
+
+.landing {
+  border-radius: 16px;
+}
+
+.drop {
+  position: relative;
+  top: 0.5rem;
 }

@@ -113,9 +113,9 @@ const Landing: FC = () => {
               <Span howItWorks>How</Span> It Works
             </H1>
           </AnyRow>
-          <HowItem>
+          <HowItem landing>
             <HowLeft>
-              <Image src={lookman} alt='lookman' />
+              <Image src={lookman} alt='lookman' className='landing' />
             </HowLeft>
             <HowRight>
               <Span howRight>Profile Generation</Span>
@@ -129,7 +129,7 @@ const Landing: FC = () => {
 
           <HowItem>
             <HowLeft>
-              <Image src={coin} alt='coin' />
+              <Image src={coin} alt='coin' className='landing' />
             </HowLeft>
             <HowRight>
               <Span howRight>Investment Map and Strategy</Span>
@@ -143,7 +143,7 @@ const Landing: FC = () => {
 
           <HowItem>
             <HowLeft>
-              <Image src={board} alt='board' />
+              <Image src={board} alt='board' className='landing' />
             </HowLeft>
             <HowRight>
               <Span howRight>Strategy Implementation</Span>
@@ -156,7 +156,7 @@ const Landing: FC = () => {
 
           <HowItem>
             <HowLeft>
-              <Image src={candles} alt='candles' />
+              <Image src={candles} alt='candles' className='landing' />
             </HowLeft>
             <HowRight>
               <Span howRight>Profile Generation</Span>
@@ -175,7 +175,7 @@ const Landing: FC = () => {
           </FaqText>
           <FAQDiv>
             <LHFaq>
-              <Image src={faqImg} alt='faqImg' />
+              <Image src={faqImg} alt='faqImg' className='landing' />
             </LHFaq>
             <RHFaq>
               <AccordionSection
@@ -206,7 +206,7 @@ const Landing: FC = () => {
               <P platform>Set up a meeting and start investing with KIMS Today</P>
               <Button platform>
                 Set Appointment
-                <BiChevronRight size={20} color='#464646' className='appoint' />
+                <BiChevronRight size={20} color='#464646' className='appointL' />
                 <BiChevronRight size={20} color='#464646' className='appoint' />
               </Button>
             </MiddlePart>

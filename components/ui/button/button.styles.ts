@@ -12,7 +12,8 @@ const ButtonContainer = styled.button<StyleProps>`
   padding: 0.5625rem 0.9375rem;
   width: 100%;
   width: ${({ topArea }) => (topArea ? '9.1875rem' : '')};
-  width: ${({ platform, contactForm }) => (platform || contactForm ? '12.5rem' : '')};
+  width: ${({ platform }) => (platform ? '12.5rem' : '')};
+  width: ${({ contactForm }) => (contactForm ? '100%' : '')};
   height: 50px;
   font-family: 'Inter', sans-serif;
   border: 1px solid #ffffff;
@@ -47,6 +48,7 @@ const ButtonContainer = styled.button<StyleProps>`
   @media screen and (min-width: 52em) {
     width: ${({ topArea }) => (topArea ? '13.25rem' : '')};
     width: ${({ platform }) => (platform ? '15.625rem' : '')};
+    width: ${({ contactForm }) => (contactForm ? '12.5rem' : '')};
     font-size: ${({ platform }) => (platform ? '17px' : '')};
     font-size: 14px;
     margin: 2.5rem 0 0 0;

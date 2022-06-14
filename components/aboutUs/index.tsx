@@ -211,7 +211,7 @@ const AboutUs: FC = () => {
               <P platform>Set up a meeting and start investing with KIMS Today</P>
               <Button platform>
                 Set Appointment
-                <BiChevronRight size={20} color='#464646' className='appoint' />
+                <BiChevronRight size={20} color='#464646' className='appointL' />
                 <BiChevronRight size={20} color='#464646' className='appoint' />
               </Button>
             </MiddlePart>

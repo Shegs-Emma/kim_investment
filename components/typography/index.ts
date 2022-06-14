@@ -45,7 +45,7 @@ const H1 = styled.h1<StyleProps>`
     text-align: ${({ howItWorks, aboutUs }) => (howItWorks || aboutUs ? 'center' : '')};
     font-size: ${({ howItWorks, blur }) => (howItWorks || blur ? '36px' : '')};
     color: ${({ blur }) => (blur ? '#FFFFFF' : '')};
-    text-align: ${({ blur }) => (blur ? 'center' : '')};
+    text-align: ${({ blur, bottom }) => (blur || bottom ? 'center' : '')};
     font-size: ${({ bottom }) => (bottom ? '54px' : '')};
   }
 
@@ -151,6 +151,8 @@ const P = styled.p<StyleProps>`
   width: ${({ footerForm }) => (footerForm ? '80%' : '')};
 
   margin: ${({ number }) => (number ? '.5rem' : '')};
+  margin-top: ${({ howRight }) => (howRight ? '-1rem' : '')};
+  margin-top: ${({ platform }) => (platform ? '1rem' : '')};
   /* or 30px */
 
   /* 464646 */
@@ -161,6 +163,8 @@ const P = styled.p<StyleProps>`
   text-align: ${({ contactForm }) => (contactForm ? 'left' : '')};
 
   @media screen and (min-width: 52em) {
+    margin-top: ${({ howRight }) => (howRight ? '0' : '')};
+    margin-top: ${({ platform }) => (platform ? '-1rem' : '')};
     font-size: 20px;
     text-align: left;
 

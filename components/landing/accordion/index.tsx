@@ -21,7 +21,7 @@ const Accordion: FC<IProps> = ({ title, data }) => {
       <AccordionTitle>
         <Span accord>{title}</Span>
         <DownIconWrapper onClick={() => setOpen(!isOpen)}>
-          <FiChevronDown color='#194A96' />
+          <FiChevronDown color='#194A96' className='drop' />
         </DownIconWrapper>
       </AccordionTitle>
       <AccordionItem collapsed={isOpen === true}>

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface LandingProps {
   aboutUs?: boolean;
+  landing?: boolean;
 }
 
 const LandingContainer = styled.div`
@@ -184,6 +185,8 @@ const HowItem = styled.div<LandingProps>`
   width: 100%;
   margin-top: 6rem;
   display: ${({ aboutUs }) => (aboutUs ? 'none' : '')};
+  background-color: ${({ landing }) => (landing ? '#fafafa' : '')};
+  border-radius: 16px;
 
   @media screen and (min-width: 52em) {
     display: ${({ aboutUs }) => (aboutUs ? 'flex' : '')};
@@ -196,6 +199,7 @@ const HowItemMobile = styled.div`
   flex-direction: column;
   width: 100%;
   margin-top: 6rem;
+  border-radius: 16px;
 
   @media screen and (min-width: 52em) {
     display: none;
@@ -204,6 +208,7 @@ const HowItemMobile = styled.div`
 
 const HowLeft = styled.div`
   width: 100%;
+  border-radius: 16px;
 
   @media screen and (min-width: 52em) {
     width: 50%;
@@ -220,13 +225,15 @@ const HowRight = styled.div<LandingProps>`
   flex-direction: column;
   background: #fafafa;
   background: ${({ aboutUs }) => (aboutUs ? 'none' : '')};
-  border-radius: 16px;
-  padding: 9rem 2rem 5rem 2rem;
+  padding: 2rem 2rem 5rem 2rem;
   padding: ${({ aboutUs }) => (aboutUs ? '1rem .2rem 1rem .2rem' : '')};
+
+  border-radius: 16px;
 
   @media screen and (min-width: 52em) {
     width: 50%;
-    padding: ${({ aboutUs }) => (aboutUs ? '9rem 2rem 5rem 2rem' : '')};
+    padding: 9rem 2rem 5rem 2rem;
+    padding: ${({ aboutUs }) => (aboutUs ? '4rem 2rem 5rem 2rem' : '')};
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
@@ -343,7 +350,7 @@ const TitlePart = styled.div`
 
 const BlueCard = styled.div`
   width: 100%;
-  margin: 6rem auto 2rem auto;
+  margin: 0 auto 2rem auto;
   border-radius: 24px;
   background-color: #194a96;
   padding: 1rem;
@@ -351,6 +358,7 @@ const BlueCard = styled.div`
   @media screen and (min-width: 52em) {
     width: 90%;
     padding: 2rem;
+    margin: 2rem auto 2rem auto;
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
@@ -369,11 +377,11 @@ const MiddlePart = styled.div`
   text-align: center;
 
   @media screen and (min-width: 52em) {
-    width: 70%;
+    width: 100%;
   }
 
   @media (min-width: 52em) and (max-width: 64.313em) {
-    width: 70%;
+    width: 100%;
     text-align: center;
     margin: 2rem auto;
   }
