@@ -5,14 +5,9 @@ import Button from '../ui/button';
 import {
   LandingContainer,
   LandingDiv,
-  NextTop,
   SubTitle,
   Title,
   TopMostLevel,
-  DetailsItems,
-  DetailItem,
-  AvatarCont,
-  DetailHeader,
   HowItWorks,
   HowItem,
   HowLeft,
@@ -23,48 +18,76 @@ import {
   FaqText,
   RHFaq,
   BottomPart,
-  TitlePart,
   BlueCard,
-  MiddlePart,
+  LeftSide,
+  RightSide,
+  Logos,
+  LeftText,
+  RightForm,
+  LeftLogos,
+  RightLogos,
 } from './landing.styles';
-import man from '../../public/assets/man.svg';
-import lock from '../../public/assets/lock.svg';
-import suitcase from '../../public/assets/case.svg';
-import lookman from '../../public/assets/lookman.svg';
-import coin from '../../public/assets/coin.svg';
-import candles from '../../public/assets/candles.svg';
-import board from '../../public/assets/board.svg';
+import investment from '../../public/assets/investment.svg';
+import market from '../../public/assets/market.svg';
 import faqImg from '../../public/assets/faqImg.svg';
+import landingGrid from '../../public/assets/landing_grid.svg';
+import logos1 from '../../public/assets/logos1.svg';
+import logos2 from '../../public/assets/logos2.svg';
+import logos3 from '../../public/assets/logos3.svg';
+import logos4 from '../../public/assets/logos4.svg';
+import logos5 from '../../public/assets/logos5.svg';
 import { AnyRow } from '../shared';
 import { AccordionSection } from './accordion/accordion.styles';
 import Accordion from './accordion';
 import landingInfo from './landingInfo';
-import { BsDiamondFill } from 'react-icons/bs';
-import { BiChevronRight } from 'react-icons/bi';
+import { FormArea, FullInput, FullTextArea } from '../footer/footer.styles';
+import { useForm } from 'react-hook-form';
+import { Contact } from '../interfaces';
+import { useForm as formSpreeUseForm, ValidationError } from '@formspree/react';
 
 const Landing: FC = () => {
+  const [state, handleSubmit] = formSpreeUseForm('meqdyglp');
+  const { register } = useForm<Contact>();
+
+  if (state.succeeded) {
+    return <p>Thanks for joining!</p>;
+  }
   return (
     <LandingContainer>
       <LandingDiv>
         <TopMostLevel>
-          <Title>
-            <H1>Secure Your Assets with the Best Investment Managers</H1>
-          </Title>
-          <SubTitle>
-            <P>
-              Secure Your Future with the Best possible Investments Secure Your Future with the Best
-              possible Investments
-            </P>
-          </SubTitle>
-          <Button topArea>Talk to an Expert</Button>
+          <LeftSide>
+            <Title>
+              <H1>We are a burgeoning african financial holding company. </H1>
+            </Title>
+            <SubTitle>
+              <P kim>Kim Africa has developed overtime to being low-touch, high-impact investors</P>
+            </SubTitle>
+            <Button topArea>Let’s do business</Button>
+          </LeftSide>
+          <RightSide>
+            <Image src={landingGrid} alt='landingGrid' />
+          </RightSide>
         </TopMostLevel>
 
-        <NextTop>
+        <Logos>
+          <LeftLogos>
+            <Image src={logos1} alt='logos1' />
+            <Image src={logos2} alt='logos2' />
+          </LeftLogos>
+          <RightLogos>
+            <Image src={logos3} alt='logos3' />
+            <Image src={logos4} alt='logos4' />
+            <Image src={logos5} alt='logos5' />
+          </RightLogos>
+        </Logos>
+
+        {/* <NextTop>
           <DetailsItems>
             <DetailItem>
               <DetailHeader>
                 <AvatarCont>
-                  <Image src={man} alt='man' />
+                  <Image src={lookman} alt='man' />
                 </AvatarCont>
                 <Span details>Customercentric</Span>
                 <P details>
@@ -79,7 +102,7 @@ const Landing: FC = () => {
             <DetailItem>
               <DetailHeader>
                 <AvatarCont>
-                  <Image src={lock} alt='lock' />
+                  <Image src={lookman} alt='lock' />
                 </AvatarCont>
                 <Span details>Security</Span>
                 <P details>
@@ -105,65 +128,39 @@ const Landing: FC = () => {
               </DetailHeader>
             </DetailItem>
           </DetailsItems>
-        </NextTop>
+        </NextTop> */}
 
         <HowItWorks>
           <AnyRow>
-            <H1 howItWorks>
-              <Span howItWorks>How</Span> It Works
-            </H1>
+            <H1 howItWorks>Our Businesses</H1>
           </AnyRow>
           <HowItem landing>
             <HowLeft>
-              <Image src={lookman} alt='lookman' className='landing' />
+              <Image src={investment} alt='lookman' className='investment' />
             </HowLeft>
             <HowRight>
-              <Span howRight>Profile Generation</Span>
+              <Span howRight>Kakawa Investment Management</Span>
               <P howRight>
-                With the aim of producing an accurate and appropriate profile, we Examine, assess,
-                analyze, and determine your present financial level/standard, risk ability and
-                tolerance, investment aims and projected time frame.
+                Kakawa Investment Management is an alternative African investment firm focused on
+                backing entrepreneurs solving African problems within and outside the continent.
+                While the foundations of Kakawa’s investments are in the fintech space, our
+                investment worldview is sector agnostic and goes to where opportunity for rapid
+                scaling exists.
               </P>
             </HowRight>
           </HowItem>
 
           <HowItem>
             <HowLeft>
-              <Image src={coin} alt='coin' className='landing' />
+              <Image src={market} alt='coin' className='landing' />
             </HowLeft>
-            <HowRight>
-              <Span howRight>Investment Map and Strategy</Span>
+            <HowRight next>
+              <Span howRight>KIM Global Markets</Span>
               <P howRight>
-                With the first stage of profile generation, we leverage our expertise and use your
-                developed profile, to create an investment map and strategy that includes spans
-                multiple assets and investment sector diversification.
-              </P>
-            </HowRight>
-          </HowItem>
-
-          <HowItem>
-            <HowLeft>
-              <Image src={board} alt='board' className='landing' />
-            </HowLeft>
-            <HowRight>
-              <Span howRight>Strategy Implementation</Span>
-              <P howRight>
-                After feedback sessions where the client is informed and updated; we proceed to the
-                implementation stage where with the blessing of our client, we begin implementation.
-              </P>
-            </HowRight>
-          </HowItem>
-
-          <HowItem>
-            <HowLeft>
-              <Image src={candles} alt='candles' className='landing' />
-            </HowLeft>
-            <HowRight>
-              <Span howRight>Profile Generation</Span>
-              <P howRight>
-                With the aim of producing an accurate and appropriate profile, we Examine, assess,
-                analyze, and determine your present financial level/standard, risk ability and
-                tolerance, investment aims and projected time frame.
+                Kakawa Securities encompasses the trading activities we engage in the financial
+                markets. This cuts across fixed income and equity assets. We pride ourselves in
+                being low-touch, high impact investors where we provide insights and support as
+                needed
               </P>
             </HowRight>
           </HowItem>
@@ -171,7 +168,7 @@ const Landing: FC = () => {
 
         <FAQArea id='faq'>
           <FaqText>
-            <H2>Frequently asked Questions</H2>
+            <H2 how>How this Works</H2>
           </FaqText>
           <FAQDiv>
             <LHFaq>
@@ -194,25 +191,158 @@ const Landing: FC = () => {
         </FAQArea>
 
         <BottomPart>
-          <TitlePart>
-            <H1 bottom>Join the people who already trust us to build their wealth</H1>
-          </TitlePart>
           <BlueCard>
-            <AnyRow left>
-              <BsDiamondFill color='rgba(242, 242, 242, 0.7)' size={27} />
-            </AnyRow>
-            <MiddlePart>
-              <H2 platform>One Platform for All your Investing Needs</H2>
-              <P platform>Set up a meeting and start investing with KIMS Today</P>
-              <Button platform>
-                Set Appointment
-                <BiChevronRight size={20} color='#464646' className='appointL' />
-                <BiChevronRight size={20} color='#464646' className='appoint' />
-              </Button>
-            </MiddlePart>
-            <AnyRow right>
-              <BsDiamondFill color='rgba(242, 242, 242, 0.7)' size={27} />
-            </AnyRow>
+            <LeftText>
+              <P leftT>GET IN TOUCH</P>
+              <H1 leftT>It starts with a conversation.</H1>
+              <P leftTP>
+                Send us a message and a member of our team will reach out to you with solutions and
+                answers on how we can help and assist you.
+              </P>
+            </LeftText>
+            <RightForm>
+              {/* <FormArea onSubmit={handleSubmit(onSubmit)}>
+                <AnyRow formShare>
+                  <AnyRow formHalf>
+                    <AnyRow>
+                      <P contactForm>First name</P>
+                    </AnyRow>
+                    <FullInput
+                      contactForm
+                      placeholder=''
+                      type='text'
+                      {...register('firstName', { required: true })}
+                    />
+                    {errors.firstName && <ErrorTag>{errors.firstName.message}</ErrorTag>}
+                  </AnyRow>
+                  <AnyRow formHalf>
+                    <AnyRow>
+                      <P contactForm>Last name</P>
+                    </AnyRow>
+                    <FullInput
+                      contactForm
+                      placeholder=''
+                      type='text'
+                      {...register('lastName', { required: true })}
+                    />
+                    {errors.lastName && <ErrorTag>{errors.lastName.message}</ErrorTag>}
+                  </AnyRow>
+                </AnyRow>
+
+                <AnyRow>
+                  <AnyRow>
+                    <P contactForm>Email</P>
+                  </AnyRow>
+                  <FullInput
+                    contactForm
+                    placeholder=''
+                    type='email'
+                    {...register('email', { required: true })}
+                  />
+                  {errors.email && <ErrorTag>{errors.email.message}</ErrorTag>}
+                </AnyRow>
+
+                <AnyRow>
+                  <AnyRow>
+                    <P contactForm>Phone Number</P>
+                  </AnyRow>
+                  <FullInput
+                    contactForm
+                    placeholder=''
+                    type='text'
+                    {...register('phone', { required: true })}
+                  />
+                  {errors.phone && <ErrorTag>{errors.phone.message}</ErrorTag>}
+                </AnyRow>
+
+                <AnyRow>
+                  <AnyRow>
+                    <P contactForm>Message</P>
+                  </AnyRow>
+                  <FullTextArea {...register('message', { required: true })} />
+                  {errors.message && <ErrorTag>{errors.message.message}</ErrorTag>}
+                </AnyRow>
+
+                <AnyRow contactForm>
+                  <Button contactForm>Send Message</Button>
+                </AnyRow>
+              </FormArea> */}
+              <FormArea onSubmit={handleSubmit}>
+                <AnyRow formShare>
+                  <AnyRow formHalf>
+                    <AnyRow>
+                      <P contactForm>First name</P>
+                    </AnyRow>
+                    <FullInput
+                      id='firstName'
+                      contactForm
+                      placeholder=''
+                      type='text'
+                      {...register('firstName', { required: true })}
+                    />
+                    <ValidationError prefix='First Name' field='firstName' errors={state.errors} />
+                    {/* {errors.firstName && <ErrorTag>{errors.firstName.message}</ErrorTag>} */}
+                  </AnyRow>
+                  <AnyRow formHalf>
+                    <AnyRow>
+                      <P contactForm>Last name</P>
+                    </AnyRow>
+                    <FullInput
+                      id='lastName'
+                      contactForm
+                      placeholder=''
+                      type='text'
+                      {...register('lastName', { required: true })}
+                    />
+                    <ValidationError prefix='Last Name' field='lastName' errors={state.errors} />
+                    {/* {errors.lastName && <ErrorTag>{errors.lastName.message}</ErrorTag>} */}
+                  </AnyRow>
+                </AnyRow>
+
+                <AnyRow>
+                  <AnyRow>
+                    <P contactForm>Email</P>
+                  </AnyRow>
+                  <FullInput
+                    id='email'
+                    contactForm
+                    placeholder=''
+                    type='email'
+                    {...register('email', { required: true })}
+                  />
+                  <ValidationError prefix='Email' field='email' errors={state.errors} />
+                  {/* {errors.email && <ErrorTag>{errors.email.message}</ErrorTag>} */}
+                </AnyRow>
+
+                <AnyRow>
+                  <AnyRow>
+                    <P contactForm>Phone Number</P>
+                  </AnyRow>
+                  <FullInput
+                    id='phone'
+                    contactForm
+                    placeholder=''
+                    type='text'
+                    {...register('phone', { required: true })}
+                  />
+                  <ValidationError prefix='Phone Number' field='phone' errors={state.errors} />
+                  {/* {errors.phone && <ErrorTag>{errors.phone.message}</ErrorTag>} */}
+                </AnyRow>
+
+                <AnyRow>
+                  <AnyRow>
+                    <P contactForm>Message</P>
+                  </AnyRow>
+                  <FullTextArea id='message' {...register('message', { required: true })} />
+                  {/* {errors.message && <ErrorTag>{errors.message.message}</ErrorTag>} */}
+                  <ValidationError prefix='Message' field='message' errors={state.errors} />
+                </AnyRow>
+
+                <AnyRow contactForm>
+                  <Button contactForm>Send Message</Button>
+                </AnyRow>
+              </FormArea>
+            </RightForm>
           </BlueCard>
         </BottomPart>
       </LandingDiv>

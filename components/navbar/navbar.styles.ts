@@ -63,7 +63,7 @@ const LinkArea = styled.div<NavbarProps>`
     display: ${({ sidebar }) => (sidebar ? 'none' : '')};
     display: flex;
     justify-content: space-between;
-    width: 25rem;
+    width: 40rem;
   }
 `;
 

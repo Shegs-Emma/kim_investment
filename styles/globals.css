@@ -41,3 +41,14 @@ a {
   position: relative;
   top: 0.5rem;
 }
+
+@media screen and (max-width: 47.9em) {
+  .aboutUsImg {
+    height: 20rem;
+  }
+}
+
+.close {
+  margin: 0.1rem 0 1.5rem auto;
+  cursor: pointer;
+}

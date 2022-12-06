@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 interface StyleProps {
   contactForm?: boolean;
+  contact?: boolean;
+  contactFormPage?: boolean;
 }
 
 const FooterContainer = styled.div`
@@ -100,19 +102,21 @@ const FormSide = styled.div`
     flex-direction: row;
     justify-content: space-between;
     margin: 0;
-    width: 60%;
+    width: 70%;
   }
 `;
 
-const FooterLinks = styled.div`
+const FooterLinks = styled.div<StyleProps>`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 90%;
   margin: 4rem 0;
 
   @media screen and (min-width: 52em) {
     flex-direction: column;
+    width: 30%;
     justify-content: space-between;
+    justify-content: ${({ contact }) => (contact ? 'start' : '')};
     margin: 0;
   }
 `;
@@ -123,7 +127,7 @@ const Contact = styled.div`
   width: 100%;
 
   @media screen and (min-width: 52em) {
-    width: 60%;
+    width: 30%;
   }
 `;
 
@@ -142,12 +146,15 @@ const FullInput = styled.input.attrs({
   box-sizing: border-box;
   border-radius: 0.5rem;
   border: 1px solid #bdbdbd;
-  border: ${({ contactForm }) => (contactForm ? 'none' : '')};
+  border: ${({ contactForm }) => (contactForm ? '0.8px solid #BDBDBD' : '')};
+  border: ${({ contactFormPage }) =>
+    contactFormPage ? '0.6px solid rgba(25, 74, 150, 0.12)' : ''};
   margin: 1.3125rem 0;
   margin: ${({ contactForm }) => (contactForm ? '0' : '')};
   padding-left: 1rem;
   background-color: transparent;
-  background-color: ${({ contactForm }) => (contactForm ? 'rgba(197, 213, 255, 0.2)' : '')};
+  background-color: ${({ contactForm }) => (contactForm ? '#FFFFFF' : '')};
+  background-color: ${({ contactFormPage }) => (contactFormPage ? 'rgba(25, 74, 150, 0.04)' : '')};
 
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -161,14 +168,16 @@ const FullInput = styled.input.attrs({
   }
 `;
 
-const FullTextArea = styled.textarea`
+const FullTextArea = styled.textarea<StyleProps>`
   outline: none;
   width: 100%;
   height: 2.8125rem;
   display: block;
   box-sizing: border-box;
-  border-radius: 0.125rem;
-  border: none;
+  border-radius: 8px;
+  border: 0.8px solid #bdbdbd;
+  border: ${({ contactFormPage }) =>
+    contactFormPage ? '0.6px solid rgba(25, 74, 150, 0.12)' : ''};
   /* margin-bottom: 0.3375rem; */
   padding: 1rem;
 
@@ -177,7 +186,9 @@ const FullTextArea = styled.textarea`
   font-weight: normal;
   font-size: 0.8125rem;
   line-height: 1.0625rem;
-  background-color: rgba(197, 213, 255, 0.2);
+  background: #ffffff;
+  background-color: ${({ contactFormPage }) => (contactFormPage ? 'rgba(25, 74, 150, 0.04)' : '')};
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   color: #4f4f4f;
 
   &:focus {
