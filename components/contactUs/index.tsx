@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { ErrorTag, FormArea, FullInput, FullTextArea } from '../footer/footer.styles';
+import { useForm } from 'react-hook-form';
+import { FormArea, FullInput, FullTextArea } from '../footer/footer.styles';
 import { Contact } from '../interfaces';
 import { LandingContainer, LandingDiv, TopMostLevel } from '../landing/landing.styles';
 import { AnyRow } from '../shared';
@@ -22,18 +22,17 @@ import messageImg from '../../public/assets/messageImg.svg';
 import Image from 'next/image';
 import { IoLocationSharp } from 'react-icons/io5';
 import { AiFillMail } from 'react-icons/ai';
+import { useForm as formSpreeUseForm, ValidationError } from '@formspree/react';
+import { toast } from 'react-hot-toast';
 
 const ContactUs: FC = () => {
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Contact>();
-  const onSubmit: SubmitHandler<Contact> = (data) => {
-    console.log(data);
-    reset();
-  };
+  const [state, handleSubmit] = formSpreeUseForm('meqdyglp');
+  const { register } = useForm<Contact>();
+
+  if (state.succeeded) {
+    toast.success('Thanks for the message!');
+  }
+
   return (
     <LandingContainer>
       <LandingDiv>
@@ -80,18 +79,19 @@ const ContactUs: FC = () => {
             <Image src={messageImg} alt='messageImg' />
           </ImageSide>
           <FormSideContact>
-            <FormArea onSubmit={handleSubmit(onSubmit)}>
+            <FormArea onSubmit={handleSubmit}>
               <AnyRow>
                 <AnyRow>
                   <P contactForm>Full Name:</P>
                 </AnyRow>
                 <FullInput
+                  id='fullName'
                   contactFormPage
                   placeholder=''
                   type='text'
                   {...register('fullName', { required: true })}
                 />
-                {errors.fullName && <ErrorTag>{errors.fullName.message}</ErrorTag>}
+                <ValidationError prefix='Full Name' field='fullName' errors={state.errors} />
               </AnyRow>
 
               <AnyRow>
@@ -99,20 +99,25 @@ const ContactUs: FC = () => {
                   <P contactForm>Email Address</P>
                 </AnyRow>
                 <FullInput
+                  id='email'
                   contactFormPage
                   placeholder=''
                   type='email'
                   {...register('email', { required: true })}
                 />
-                {errors.email && <ErrorTag>{errors.email.message}</ErrorTag>}
+                <ValidationError prefix='Email' field='email' errors={state.errors} />
               </AnyRow>
 
               <AnyRow>
                 <AnyRow>
                   <P contactForm>Message</P>
                 </AnyRow>
-                <FullTextArea contactFormPage {...register('message', { required: true })} />
-                {errors.message && <ErrorTag>{errors.message.message}</ErrorTag>}
+                <FullTextArea
+                  id='message'
+                  contactFormPage
+                  {...register('message', { required: true })}
+                />
+                <ValidationError prefix='Message' field='message' errors={state.errors} />
               </AnyRow>
 
               <AnyRow contactForm>
