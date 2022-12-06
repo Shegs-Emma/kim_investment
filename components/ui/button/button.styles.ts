@@ -29,13 +29,16 @@ const ButtonContainer = styled.button<StyleProps>`
   text-align: center;
 
   background: #ea622b;
-  background: ${({ topArea, contactForm }) => (topArea || contactForm ? '#194A96' : '')};
+  background: ${({ topArea, contactForm }) =>
+    topArea || contactForm ? 'rgba(25, 74, 150, 1)' : ''};
   background: ${({ platform }) => (platform ? '#ffffff' : '')};
   border-radius: 0.125rem;
   border-radius: ${({ topArea, platform }) => (topArea || platform ? '8px' : '')};
   &:hover,
   &:active {
     background-color: rgba(150, 20, 132, 1);
+    background: ${({ topArea, contactForm }) =>
+      topArea || contactForm ? 'rgba(25, 74, 150, .7)' : ''};
     box-shadow: 0px 3px 2px rgba(29, 29, 29, 0.1);
     color: #ffffff;
     outline: none;
@@ -48,7 +51,7 @@ const ButtonContainer = styled.button<StyleProps>`
   @media screen and (min-width: 52em) {
     width: ${({ topArea }) => (topArea ? '13.25rem' : '')};
     width: ${({ platform }) => (platform ? '15.625rem' : '')};
-    width: ${({ contactForm }) => (contactForm ? '12.5rem' : '')};
+    width: ${({ contactForm }) => (contactForm ? '100%' : '')};
     font-size: ${({ platform }) => (platform ? '17px' : '')};
     font-size: 14px;
     margin: 2.5rem 0 0 0;

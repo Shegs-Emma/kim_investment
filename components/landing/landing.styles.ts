@@ -1,8 +1,14 @@
-import styled from 'styled-components';
+import styled, { StyledProps } from 'styled-components';
 
 interface LandingProps {
   aboutUs?: boolean;
   landing?: boolean;
+  next?: boolean;
+  aboutUS?: boolean;
+  contactUS?: boolean;
+  team?: boolean;
+  teamB?: boolean;
+  popover?: boolean;
 }
 
 const LandingContainer = styled.div`
@@ -26,24 +32,76 @@ const LandingDiv = styled.div`
   }
 `;
 
-const TopMostLevel = styled.div`
+const TopMostLevel = styled.div<LandingProps>`
   width: 100%;
+
   padding: 6.5rem 1rem 7.5rem 1rem;
+  padding: ${({ aboutUS }) => (aboutUS ? '0' : '')};
   display: flex;
   flex-direction: column;
   margin-top: -1rem;
   background-color: #fafafa;
 
+  background-color: ${({ contactUS }) => (contactUS ? 'transparent' : '')};
+
   @media screen and (min-width: 52em) {
     padding: 6.5rem 4rem 7.5rem 4rem;
+    padding: ${({ aboutUS }) => (aboutUS ? '0' : '')};
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
     padding: 6.5rem 2rem 7.5rem 2rem;
+    padding: ${({ aboutUS }) => (aboutUS ? '0' : '')};
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   @media (min-width: 52em) and (max-width: 64.313em) {
     padding: 6.5rem 2rem 7.5rem 2rem;
+    padding: ${({ aboutUS }) => (aboutUS ? '0' : '')};
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const LeftSide = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 52em) {
+    width: 45%;
+  }
+
+  @media (min-width: 48em) and (max-width: 51.938em) {
+    width: 40%;
+  }
+
+  @media (min-width: 52em) and (max-width: 64.313em) {
+    width: 40%;
+  }
+`;
+
+const RightSide = styled.div`
+  width: 100%;
+
+  margin-top: 3rem;
+
+  @media screen and (min-width: 52em) {
+    width: 40%;
+    margin-top: 0;
+  }
+
+  @media (min-width: 48em) and (max-width: 51.938em) {
+    width: 40%;
+    margin-top: -2rem;
+  }
+
+  @media (min-width: 52em) and (max-width: 64.313em) {
+    width: 40%;
+    margin-top: -2rem;
   }
 `;
 
@@ -51,7 +109,7 @@ const Title = styled.div<LandingProps>`
   width: 100%;
 
   @media (min-width: 52em) {
-    width: 60%;
+    width: 100%;
     display: ${({ aboutUs }) => (aboutUs ? 'flex' : '')};
     flex-direction: ${({ aboutUs }) => (aboutUs ? 'column' : '')};
     width: ${({ aboutUs }) => (aboutUs ? '100%' : '')};
@@ -59,7 +117,7 @@ const Title = styled.div<LandingProps>`
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
   }
 `;
@@ -70,15 +128,51 @@ const SubTitle = styled.div`
   text-align: center;
 
   @media screen and (min-width: 52em) {
-    width: 60%;
+    width: 80%;
     margin: -1rem 0 0 0;
     text-align: left;
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
-    width: 60%;
+    width: 80%;
     margin: -1rem auto 0 auto;
     text-align: center;
+  }
+`;
+
+const Logos = styled.div`
+  width: 75%;
+  margin: 3rem auto 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (min-width: 52em) {
+    flex-direction: row;
+  }
+`;
+
+const LeftLogos = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (min-width: 52em) {
+    width: 50%;
+    padding-right: 5rem;
+  }
+`;
+
+const RightLogos = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+  @media screen and (min-width: 52em) {
+    width: 50%;
+    padding-left: 5rem;
+    margin-top: -0.5rem;
   }
 `;
 
@@ -185,7 +279,9 @@ const HowItem = styled.div<LandingProps>`
   width: 100%;
   margin-top: 6rem;
   display: ${({ aboutUs }) => (aboutUs ? 'none' : '')};
-  background-color: ${({ landing }) => (landing ? '#fafafa' : '')};
+  background-color: #333333;
+  background-color: ${({ landing }) => (landing ? '#333333' : '')};
+  background-color: ${({ aboutUs }) => (aboutUs ? 'transparent' : '')};
   border-radius: 16px;
 
   @media screen and (min-width: 52em) {
@@ -198,7 +294,7 @@ const HowItemMobile = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 6rem;
+  margin-top: 0.1rem;
   border-radius: 16px;
 
   @media screen and (min-width: 52em) {
@@ -208,7 +304,7 @@ const HowItemMobile = styled.div`
 
 const HowLeft = styled.div`
   width: 100%;
-  border-radius: 16px;
+  /* border-radius: 16px; */
 
   @media screen and (min-width: 52em) {
     width: 50%;
@@ -223,27 +319,76 @@ const HowRight = styled.div<LandingProps>`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: #fafafa;
-  background: ${({ aboutUs }) => (aboutUs ? 'none' : '')};
+  background: #333333;
+  background: ${({ aboutUs, team, teamB }) => (aboutUs || team || teamB ? 'none' : '')};
+  background: ${({ next }) => (next ? '#9D2104' : '')};
   padding: 2rem 2rem 5rem 2rem;
   padding: ${({ aboutUs }) => (aboutUs ? '1rem .2rem 1rem .2rem' : '')};
 
-  border-radius: 16px;
+  /* border-radius: 16px; */
 
   @media screen and (min-width: 52em) {
     width: 50%;
     padding: 9rem 2rem 5rem 2rem;
     padding: ${({ aboutUs }) => (aboutUs ? '4rem 2rem 5rem 2rem' : '')};
+    padding: ${({ team }) => (team ? '2rem 2rem 5rem 6rem' : '')};
+    padding: ${({ teamB }) => (teamB ? '2rem 6rem 5rem 0' : '')};
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
     width: 85%;
+    width: ${({ next }) => (next ? '85%' : '')};
     margin: 0 auto;
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
     margin: 0 auto 0 3rem;
     width: 75%;
+    width: ${({ next }) => (next ? '85%' : '')};
+  }
+`;
+
+const OurPartnersArea = styled.div`
+  width: 100%;
+  background: #f2f2f2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Partners = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 6rem 0 1rem 0;
+`;
+
+const PartnerRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 0.1rem;
+  margin: 4rem 0 0 0;
+
+  @media screen and (min-width: 52em) {
+    flex-direction: row;
+    padding: 0 6rem;
+  }
+`;
+
+const Partner = styled.div<LandingProps>`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 8px;
+  margin-top: ${({ next }) => (next ? '4rem' : '')};
+
+  @media screen and (min-width: 52em) {
+    width: 45%;
+    margin-top: ${({ next }) => (next ? '0' : '')};
   }
 `;
 
@@ -323,14 +468,14 @@ const FaqText = styled.div`
 
 const BottomPart = styled.div`
   padding: 1.5rem;
-  margin-bottom: 6rem;
+  margin: 30rem 0 0 0;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #194a96;
   display: flex;
   flex-direction: column;
 
   @media screen and (min-width: 52em) {
-    padding: 4rem;
+    padding: 2rem;
   }
 `;
 
@@ -348,26 +493,57 @@ const TitlePart = styled.div`
   }
 `;
 
-const BlueCard = styled.div`
+const BlueCard = styled.div<LandingProps>`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: 0 auto 2rem auto;
-  border-radius: 24px;
-  background-color: #194a96;
+  position: relative;
+  top: -20rem;
+  top: ${({ popover }) => (popover ? '1rem' : '')};
+  /* margin: -35rem auto 2rem auto; */
+  background-color: #ffffff;
   padding: 1rem;
 
+  border: 1px solid #e0e0e0;
+  box-shadow: -3px 4px 8px 1px rgba(83, 110, 152, 0.18);
+  border-radius: 8px;
+
   @media screen and (min-width: 52em) {
+    flex-direction: row;
+    justify-content: ${({ popover }) => (popover ? 'space-between' : '')};
     width: 90%;
-    padding: 2rem;
+    width: ${({ popover }) => (popover ? '100%' : '')};
+    padding: 5rem 2rem;
     margin: 2rem auto 2rem auto;
   }
 
   @media (min-width: 48em) and (max-width: 51.938em) {
     width: 90%;
-    padding: 2rem;
+    width: ${({ popover }) => (popover ? '100%' : '')};
+    padding: 5rem 2rem;
+    margin: 2rem auto 2rem auto;
   }
 
   @media (min-width: 52em) and (max-width: 64.313em) {
-    padding: 2rem;
+    padding: 5rem 2rem;
+  }
+`;
+
+const LeftText = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 52em) {
+    width: 50%;
+  }
+`;
+
+const RightForm = styled.div`
+  width: 100%;
+
+  @media screen and (min-width: 52em) {
+    width: 50%;
   }
 `;
 
@@ -395,6 +571,7 @@ export {
   SubTitle,
   NextTop,
   DetailsItems,
+  Logos,
   DetailItem,
   DetailHeader,
   AvatarCont,
@@ -402,15 +579,25 @@ export {
   HowItem,
   HowLeft,
   HowRight,
+  Partners,
+  PartnerRow,
+  Partner,
   FAQArea,
   FAQDiv,
   LHFaq,
   RHFaq,
   FaqIcon,
+  LeftText,
+  RightForm,
   FaqText,
   BottomPart,
   TitlePart,
+  OurPartnersArea,
   BlueCard,
   MiddlePart,
   HowItemMobile,
+  LeftSide,
+  LeftLogos,
+  RightLogos,
+  RightSide,
 };

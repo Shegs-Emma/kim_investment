@@ -3,7 +3,10 @@ export type Inputs = {
 };
 
 export type Contact = {
-  name: string;
+  fullName: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  phone: string;
   message: string;
 };

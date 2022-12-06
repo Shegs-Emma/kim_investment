@@ -1,24 +1,19 @@
 const landingInfo = {
   faq: [
     {
-      title: 'What is Kakawa Investments',
+      title: 'Hard problems',
       subTitle:
-        'With the aim of producing an accurate and appropriate profile, we  Examine, assess, analyze, and determine your present financial level/standard, risk ability and tolerance, investment aims and projected time frame.',
+        'We  Examine, assess, analyze and look for companies solving hard problems in big markets',
     },
     {
-      title: 'What is Kakawa Investments',
+      title: 'Scalability',
       subTitle:
-        'With the aim of producing an accurate and appropriate profile, we  Examine, assess, analyze, and determine your present financial level/standard, risk ability and tolerance, investment aims and projected time frame.',
+        'We partner and invest in companies that can scale quickly and profitably over the long term.',
     },
     {
-      title: 'How do i know which service is best for me',
+      title: 'Committed founders',
       subTitle:
-        'We offer a range of impactful investment services for our clients. Our Relationship Managers can customise a solution once you get in touch with us for you.',
-    },
-    {
-      title: 'How do i get in touch with an investment manager',
-      subTitle:
-        'With the aim of producing an accurate and appropriate profile, we  Examine, assess, analyze, and determine your present financial level/standard, risk ability and tolerance, investment aims and projected time frame.',
+        'We seek founders who are passionate, committed and flexible enough to adapt quickly to an ever-changing terrain.',
     },
   ],
   //   infos: [
