@@ -44,14 +44,16 @@ import { FormArea, FullInput, FullTextArea } from '../footer/footer.styles';
 import { useForm } from 'react-hook-form';
 import { Contact } from '../interfaces';
 import { useForm as formSpreeUseForm, ValidationError } from '@formspree/react';
+import { toast } from 'react-hot-toast';
 
 const Landing: FC = () => {
   const [state, handleSubmit] = formSpreeUseForm('meqdyglp');
   const { register } = useForm<Contact>();
 
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    toast.success('Thanks for the message!');
   }
+
   return (
     <LandingContainer>
       <LandingDiv>
