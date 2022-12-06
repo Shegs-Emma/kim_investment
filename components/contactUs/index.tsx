@@ -27,9 +27,10 @@ import { toast } from 'react-hot-toast';
 
 const ContactUs: FC = () => {
   const [state, handleSubmit] = formSpreeUseForm('meqdyglp');
-  const { register } = useForm<Contact>();
+  const { register, reset } = useForm<Contact>();
 
   if (state.succeeded) {
+    reset();
     toast.success('Thanks for the message!');
   }
 

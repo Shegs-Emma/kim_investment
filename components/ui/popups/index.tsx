@@ -19,15 +19,17 @@ import { H1, P } from '../../typography';
 import { GrClose } from 'react-icons/gr';
 import { BlueCard, LeftText, RightForm } from '../../landing/landing.styles';
 import { useForm as formSpreeUseForm, ValidationError } from '@formspree/react';
+import { toast } from 'react-hot-toast';
 
 const PopUp: FC = () => {
   const [state, handleSubmit] = formSpreeUseForm('meqdyglp');
   const dispatch = useDispatch<AppDispatch>();
   const { popUpOpen } = useSelector((state: RootState) => state.modal);
-  const { register } = useForm<Contact>();
+  const { register, reset } = useForm<Contact>();
 
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    reset();
+    toast.success('Thanks for the message!');
   }
 
   return (
