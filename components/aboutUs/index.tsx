@@ -93,11 +93,11 @@ const AboutUs: FC = () => {
               </Span>
               <P passion>
                 We are involved in backing entrepreneurs solving African problems within and outside
-                the continent,. Although the fintech industry forms the basis of Kakawa's
+                the continent. Although the fintech industry forms the basis of Kakawa&apos;s
                 investments, our investing perspective is sector-neutral and looks to where
                 opportunity for quick expansion exists. We also finance early-stage businesses
-                outside the start-up space. For example,We are investors in The Good Beach, Lagos'
-                premier beach club.
+                outside the start-up space. For example,We are investors in The Good Beach,
+                Lagos&apos; premier beach club.
               </P>
             </HowRight>
           </HowItem>
@@ -130,11 +130,11 @@ const AboutUs: FC = () => {
               </Span>
               <P passion>
                 We are involved in backing entrepreneurs solving African problems within and outside
-                the continent,. Although the fintech industry forms the basis of Kakawa's
+                the continent. Although the fintech industry forms the basis of Kakawa&apos;s
                 investments, our investing perspective is sector-neutral and looks to where
                 opportunity for quick expansion exists. We also finance early-stage businesses
-                outside the start-up space. For example,We are investors in The Good Beach, Lagos'
-                premier beach club.
+                outside the start-up space. For example,We are investors in The Good Beach,
+                Lagos&apos; premier beach club.
               </P>
             </HowRight>
           </HowItemMobile>
