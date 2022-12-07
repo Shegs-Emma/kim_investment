@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { H1, P, Span, H2 } from '../typography';
 import Button from '../ui/button';
 import {
@@ -48,12 +48,22 @@ import { toast } from 'react-hot-toast';
 
 const Landing: FC = () => {
   const [state, handleSubmit] = formSpreeUseForm('meqdyglp');
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { register, reset } = useForm<Contact>();
 
-  if (state.succeeded) {
-    reset();
-    toast.success('Thanks for the message!');
-  }
+  useEffect(() => {
+    if (state.succeeded) {
+      setIsSubmitted(true);
+    }
+  }, [state.succeeded]);
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setIsSubmitted(false);
+      reset();
+      toast.success('Message Successfully Sent!');
+    }
+  }, [isSubmitted]);
 
   return (
     <LandingContainer>
@@ -61,7 +71,7 @@ const Landing: FC = () => {
         <TopMostLevel>
           <LeftSide>
             <Title>
-              <H1>We are a burgeoning african financial holding company. </H1>
+              <H1>We are a burgeoning African financial holding company. </H1>
             </Title>
             <SubTitle>
               <P kim>Kim Africa has developed overtime to being low-touch, high-impact investors</P>

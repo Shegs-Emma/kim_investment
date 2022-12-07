@@ -50,7 +50,7 @@ const Footer: FC = () => {
 
         <FooterBottom>
           <FooterPara>
-            <P footerBottom>2021 KIMS Investments </P>
+            <P footerBottom>2022 KIMS Investments </P>
             <P footerBottom>Copyright and All Rights Reserved</P>
           </FooterPara>
           <P footerBottom>Terms and Conditions</P>
