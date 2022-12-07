@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { togglePopUp } from '../../../store/slices/modalSlice';
 import {
   BlueCardInner,
@@ -24,13 +24,23 @@ import { toast } from 'react-hot-toast';
 const PopUp: FC = () => {
   const [state, handleSubmit] = formSpreeUseForm('meqdyglp');
   const dispatch = useDispatch<AppDispatch>();
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { popUpOpen } = useSelector((state: RootState) => state.modal);
   const { register, reset } = useForm<Contact>();
 
-  if (state.succeeded) {
-    reset();
-    toast.success('Thanks for the message!');
-  }
+  useEffect(() => {
+    if (state.succeeded) {
+      setIsSubmitted(true);
+    }
+  }, [state.succeeded]);
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setIsSubmitted(false);
+      reset();
+      toast.success('Message Successfully Sent!');
+    }
+  }, [isSubmitted]);
 
   return (
     <PopUpContainer>
