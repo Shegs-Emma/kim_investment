@@ -42,7 +42,7 @@ const Footer: FC = () => {
               <Span footer>Connect</Span>
               <P footer>Question or Feedback? We would love to hear from you</P>
               <P footer line>
-                mailto:info@kimafrica.com
+                info@kimafrica.com
               </P>
             </Contact>
           </FormSide>

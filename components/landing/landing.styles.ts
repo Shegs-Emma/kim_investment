@@ -13,7 +13,7 @@ interface LandingProps {
 
 const LandingContainer = styled.div`
   width: 100%;
-  padding-top: 8rem;
+  padding-top: 6rem;
 `;
 
 const LandingDiv = styled.div`
@@ -305,6 +305,7 @@ const HowItemMobile = styled.div`
 const HowLeft = styled.div`
   width: 100%;
   /* border-radius: 16px; */
+  border-radius: 16px;
 
   @media screen and (min-width: 52em) {
     width: 50%;
@@ -324,6 +325,7 @@ const HowRight = styled.div<LandingProps>`
   background: ${({ next }) => (next ? '#9D2104' : '')};
   padding: 2rem 2rem 5rem 2rem;
   padding: ${({ aboutUs }) => (aboutUs ? '1rem .2rem 1rem .2rem' : '')};
+  border-radius: 16px;
 
   /* border-radius: 16px; */
 
